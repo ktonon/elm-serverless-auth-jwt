@@ -11,7 +11,9 @@
   "scripts": {
     "start": "cd demo && serverless offline",
     "pretest": "node scripts/test-server",
-    "test": "mocha tests",
+    "test": "npm run test:js && npm run test:elm",
+    "test:js": "mocha tests",
+    "test:elm": "elm-doc-test && elm test",
     "posttest": "eslint ."
   },
   "repository": {
