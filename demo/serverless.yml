@@ -1,0 +1,22 @@
+service: elm-serverless-auth-jwt-demo
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    dontPrintOutput: true
+
+functions:
+  hello:
+    handler: src/Auth/api.handler
+    events:
+      - http:
+          integration: lambda-proxy
+          path: /
+          method: ANY

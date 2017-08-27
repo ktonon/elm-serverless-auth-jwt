@@ -1,0 +1,51 @@
+{
+  "name": "elm-serverless-auth-jwt",
+  "version": "1.0.0",
+  "description": "Demo elm-serverless-auth-jwt middleware",
+  "main": "demo/src/Auth/api.js",
+  "author": "Kevin Tonon <kevin@betweenconcepts.com>",
+  "license": "MIT",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "cd demo && serverless offline",
+    "pretest": "node scripts/test-server",
+    "test": "mocha tests",
+    "posttest": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ktonon/elm-serverless-auth-jwt.git"
+  },
+  "keywords": [
+    "elm",
+    "serverless",
+    "jwt"
+  ],
+  "dependencies": {
+    "elm-serverless": "^4.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^3.1.4",
+    "elm": "^0.18.0",
+    "elm-webpack-loader": "^4.3.1",
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb": "^15.0.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "mocha": "^3.4.2",
+    "ps-list": "^4.0.0",
+    "rc": "^1.1.6",
+    "serverless": "^1.19.0",
+    "serverless-offline": "^3.15.3",
+    "serverless-webpack": "^2.2.0",
+    "shebang-loader": "0.0.1",
+    "should": "^11.2.1",
+    "strip-debug-loader": "^1.0.0",
+    "superagent-defaults": "^0.1.14",
+    "supertest": "^3.0.0",
+    "webpack": "^3.5.4"
+  }
+}

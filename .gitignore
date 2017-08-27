@@ -1,0 +1,6 @@
+elm-stuff/
+node_modules/
+.webpack/
+tests/Doc
+*.log
+docs.json
