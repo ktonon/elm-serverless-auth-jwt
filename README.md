@@ -1,6 +1,7 @@
 # elm-serverless-auth-jwt
 
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
+[![elm-package](https://img.shields.io/badge/elm-1.0.0-blue.svg)](http://package.elm-lang.org/packages/ktonon/elm-serverless-auth-jwt/latest)
 [![CircleCI](https://img.shields.io/circleci/project/github/ktonon/elm-serverless-auth-jwt/master.svg)](https://circleci.com/gh/ktonon/elm-serverless-auth-jwt)
 
 This is authorization middleware for [elm-serverless][] using [JSON Web Tokens][].
