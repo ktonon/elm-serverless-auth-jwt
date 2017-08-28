@@ -5,5 +5,8 @@
 
 This is authorization middleware for [elm-serverless][] using [JSON Web Tokens][].
 
+See the [demo](https://github.com/ktonon/elm-serverless-auth-jwt/blob/master/demo/src/Auth/API.elm)
+for a complete usage example.
+
 [elm-serverless]:http://package.elm-lang.org/packages/ktonon/elm-serverless/latest
 [JSON Web Tokens]:https://jwt.io/

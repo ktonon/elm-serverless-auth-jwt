@@ -8,16 +8,10 @@ import Serverless.JWT
 import Serverless.Plug as Plug exposing (Plug, plug)
 
 
-{-| Pipelines demo.
-
-Pipelines are sequences of functions which transform the connection. They are
-ideal for building middleware.
-
--}
-main : Serverless.Program Config () () () ()
+main : Serverless.Program Config Model () () ()
 main =
     Serverless.httpApi
-        { initialModel = ()
+        { initialModel = Model ""
         , parseRoute = Serverless.noRoutes
         , update = Serverless.noSideEffects
         , interop = Serverless.noInterop
@@ -32,8 +26,7 @@ main =
         -- Even if we didn't use `mapUnsent`, no harm could be done, as a sent
         -- conn is immutable.
         , endpoint =
-            Plug.apply pipeline
-                >> mapUnsent (respond ( 200, textBody "Pipeline applied" ))
+            Plug.apply pipeline >> mapUnsent endpoint
 
         -- Some middleware may provide a configuration decoder.
         , configDecoder =
@@ -48,10 +41,30 @@ type alias Config =
     { auth : Serverless.JWT.Config }
 
 
-pipeline : Plug Config () () ()
+{-| Store the decoded payload in the model for later use.
+-}
+type alias Model =
+    { payload : String }
+
+
+pipeline : Plug Config Model () ()
 pipeline =
     Plug.pipeline
-        |> plug (Serverless.JWT.auth .auth Json.Decode.string (\payload model -> model))
+        |> plug
+            (Serverless.JWT.auth
+                .auth
+                Json.Decode.string
+                (\payload model -> { model | payload = payload })
+            )
+
+
+endpoint : Conn Config Model () () -> ( Conn Config Model () (), Cmd () )
+endpoint conn =
+    respond
+        ( 200
+        , textBody (conn |> model |> .payload)
+        )
+        conn
 
 
 port requestPort : Serverless.RequestPort msg
